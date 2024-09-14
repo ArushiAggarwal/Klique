@@ -1,0 +1,260 @@
+{
+    "steps": [
+        {
+            "progressText" : "Let us get to know you",
+            "question": "What type of content do you want to create?",
+            "options": [
+                {
+                    "label": "Educating",
+                    "value": "educating"
+                },
+                {
+                    "label": "Entertaining",
+                    "value": "entertaining"
+                },
+                {
+                    "label": "Conversational",
+                    "value": "conversational"
+                },
+                {
+                    "label": "Promotional",
+                    "value": "promotional"
+                },
+                {
+                    "label": "Don’t know yet",
+                    "value": "dont_know_yet"
+                }
+            ],
+            "progress": 0.2
+        },
+        {
+            "progressText" : "Help up understand you a bit better",
+            "question": "What’s your vibe like?",
+            "instruction": "Select up to 2",
+            "options": [
+                {
+                    "label": "Friendly & Warm",
+                    "value": "friendly_warm"
+                },
+                {
+                    "label": "Informative & Direct",
+                    "value": "informative_direct"
+                },
+                {
+                    "label": "Creative & Unique",
+                    "value": "creative_unique"
+                },
+                {
+                    "label": "Relaxed & chilled",
+                    "value": "relaxed_chilled"
+                },
+                {
+                    "label": "Risk-taker",
+                    "value": "risk_taker"
+                },
+                {
+                    "label": "Spontaneous",
+                    "value": "spontaneous"
+                },
+                {
+                    "label": "Goofy",
+                    "value": "goofy"
+                },
+                {
+                    "label": "Inspiring",
+                    "value": "inspiring"
+                },
+                {
+                    "label": "Sassy & Cool",
+                    "value": "sassy_cool"
+                },
+                {
+                    "label": "Helpful",
+                    "value": "helpful"
+                }
+            ],
+            "selectionLimit": 2
+        },
+        {
+            "progressText" : "Tell us about you porous",
+            "question": "What’s your goal?",
+            "options": [
+                {
+                    "title": "Growth",
+                    "description": "Gain followers, views & engagement.",
+                    "icon": "trending-up-outline"
+                },
+                {
+                    "title": "Promotion",
+                    "description": "Get visibility & reach potential customers.",
+                    "icon": "megaphone-outline"
+                },
+                {
+                    "title": "Monetisation",
+                    "description": "Get brand deals & make money from content.",
+                    "icon": "cash-outline"
+                }
+            ]
+        },
+        {
+            "progressText" : "Let's know your direction",
+            "question": "What do you want to create?",
+            "instruction": "Select up to 2",
+            "options": [
+                {
+                    "label": "Long Form Videos",
+                    "value": "long_form_videos"
+                },
+                {
+                    "label": "Short Form Videos",
+                    "value": "short_form_videos"
+                },
+                {
+                    "label": "Audio Podcasts",
+                    "value": "audio_podcasts"
+                },
+                {
+                    "label": "Video Podcasts",
+                    "value": "video_podcasts"
+                },
+                {
+                    "label": "Visual Posts",
+                    "value": "visual_posts"
+                },
+                {
+                    "label": "Text Posts",
+                    "value": "text_posts"
+                },
+                {
+                    "label": "Live",
+                    "value": "live"
+                },
+                {
+                    "label": "Not Listed",
+                    "value": "not_listed"
+                },
+                {
+                    "label": "Don’t know yet",
+                    "value": "dont_know_yet"
+                }
+            ],
+            "selectionLimit": 2
+        },
+        {
+            "progressText" : "Just tell us one more thing",
+            "question": "Let’s pick a niche",
+            "instruction": "Select up to 3",
+            "options": [
+                {
+                    "label": "Fashion/Lifestyle",
+                    "value": "fashion_lifestyle"
+                },
+                {
+                    "label": "Beauty",
+                    "value": "beauty"
+                },
+                {
+                    "label": "Finance",
+                    "value": "finance"
+                },
+                {
+                    "label": "Travel",
+                    "value": "travel"
+                },
+                {
+                    "label": "Gaming",
+                    "value": "gaming"
+                },
+                {
+                    "label": "Health & Fitness",
+                    "value": "health_fitness"
+                },
+                {
+                    "label": "Business",
+                    "value": "business"
+                },
+                {
+                    "label": "Technology",
+                    "value": "technology"
+                },
+                {
+                    "label": "Personal Vlogs",
+                    "value": "personal_vlogs"
+                },
+                {
+                    "label": "I have a brand",
+                    "value": "i_have_a_brand"
+                },
+                {
+                    "label": "Career",
+                    "value": "career"
+                },
+                {
+                    "label": "Domain Expert",
+                    "value": "domain_expert"
+                },
+                {
+                    "label": "Not Listed",
+                    "value": "not_listed"
+                },
+                {
+                    "label": "Don’t know yet",
+                    "value": "dont_know_yet"
+                }
+            ],
+            "selectionLimit": 3
+        },
+        {
+            "progressText" : "And  you're all set to create",
+            "question": "Which platform you wanna create for?",
+            "instruction": "Select up to 2",
+            "options": [
+                {
+                    "label": "Youtube",
+                    "value": "youtube"
+                },
+                {
+                    "label": "Instagram",
+                    "value": "instagram"
+                },
+                {
+                    "label": "Twitter",
+                    "value": "twitter"
+                },
+                {
+                    "label": "Linkedin",
+                    "value": "linkedin"
+                },
+                {
+                    "label": "Facebook",
+                    "value": "facebook"
+                },
+                {
+                    "label": "Tik Tok",
+                    "value": "tik_tok"
+                },
+                {
+                    "label": "Pinterest",
+                    "value": "pinterest"
+                },
+                {
+                    "label": "Threads",
+                    "value": "threads"
+                },
+                {
+                    "label": "Discord",
+                    "value": "discord"
+                },
+                {
+                    "label": "Not Listed",
+                    "value": "not_listed"
+                },
+                {
+                    "label": "Don’t know yet",
+                    "value": "dont_know_yet"
+                }
+            ],
+            "selectionLimit": 2
+        }
+    ]
+}
