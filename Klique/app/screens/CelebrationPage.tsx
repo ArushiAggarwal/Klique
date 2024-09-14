@@ -1,15 +1,12 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-const CelebrationPage = () => {
+const CelebrationPage = ({navigation}:any) => {
   return (
     <View style={styles.container}>
       {/* Celebration Icon */}
-      <Image
-        source={{ uri: 'https://example.com/celebration-icon.png' }} // Replace with your actual icon URL or local asset
-        style={styles.icon}
-        resizeMode="contain"
-      />
+      <MaterialIcons name="celebration" style={styles.icon} size={90} color="#FF6B45" />
       
       {/* Main Heading */}
       <Text style={styles.mainHeading}>Wohoo!</Text>
@@ -23,7 +20,7 @@ const CelebrationPage = () => {
       </Text>
       
       {/* Call to Action */}
-      <Text style={styles.callToAction}>Let’s get you creating ASAP!</Text>
+      <Text style={styles.callToAction} onPress={() => navigation.navigate('BasePage')}>Let’s get you creating ASAP!</Text>
     </View>
   );
 };
@@ -34,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   icon: {
     width: 100, // Adjust size as needed
@@ -43,22 +40,22 @@ const styles = StyleSheet.create({
     tintColor: '#FF6B45', // Adjust color to match design
   },
   mainHeading: {
-    fontSize: 48,
+    fontSize: 40,
     fontWeight: 'bold',
-    color: '#D5FF00', // Yellow color for the main heading
-    marginBottom: 10,
+    color: '#f0f871', // Yellow color for the main heading
+    marginBottom: 60,
   },
   subHeading: {
     fontSize: 36,
     fontWeight: 'bold',
     color: '#FFFFFF', // White color for the subheading
-    marginBottom: 20,
+    marginBottom: 30,
   },
   message: {
     fontSize: 20,
     color: '#FFFFFF', // White color for the message
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 30,
   },
   callToAction: {
     fontSize: 20,

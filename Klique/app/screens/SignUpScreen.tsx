@@ -26,7 +26,7 @@ const SignUpScreen = ({navigation}:any) => {
 
       <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OnBoardUsers')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BasePage')}>
         <Text style={styles.buttonText}>Let's Create</Text>
       </TouchableOpacity>
     </View>

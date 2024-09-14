@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import SignUpScreen from './screens/SignUpScreen'
 import OnBoardUsers from './screens/OnBoardUsers'
 import CelebrationPage from './screens/CelebrationPage'
+import BasePage from './screens/protected-screens/BasePage'
 
 const Stack = createNativeStackNavigator()
 
@@ -12,7 +13,8 @@ const SplashScreen = ({ navigation }: any) => {
   useEffect(() => {
     // Navigate to HomeScreen after 3 seconds
     const timer = setTimeout(() => {
-      navigation.replace('Home') // Use replace to avoid going back to the splash screen
+      // navigation.replace('Home') 
+      navigation.replace('BasePage')
     }, 3000)
 
     // Cleanup the timer on component unmount
@@ -34,6 +36,7 @@ export default function App() {
       <Stack.Screen name="Home" component={SignUpScreen} />
       <Stack.Screen name="OnBoardUsers" component={OnBoardUsers} />
       <Stack.Screen name="CelebrationPage" component={CelebrationPage} />
+      <Stack.Screen name="BasePage" component={BasePage} />
     </Stack.Navigator>
   )
 }
