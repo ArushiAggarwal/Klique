@@ -5,6 +5,7 @@ import SignUpScreen from './screens/SignUpScreen'
 import OnBoardUsers from './screens/OnBoardUsers'
 import CelebrationPage from './screens/CelebrationPage'
 import BasePage from './screens/protected-screens/BasePage'
+import { Colors } from '@/constants/Colors'
 
 const Stack = createNativeStackNavigator()
 
@@ -13,8 +14,8 @@ const SplashScreen = ({ navigation }: any) => {
   useEffect(() => {
     // Navigate to HomeScreen after 3 seconds
     const timer = setTimeout(() => {
-      // navigation.replace('Home') 
-      navigation.replace('BasePage')
+      navigation.replace('Home') 
+      // navigation.replace('BasePage')
     }, 3000)
 
     // Cleanup the timer on component unmount
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   brandText: {
-    color: '#D5FF00', // Light yellow text
+    color: Colors.primaryTextColor, // Light yellow text
     fontSize: 60,
     fontWeight: 'bold',
   },

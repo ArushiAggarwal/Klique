@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors';
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
@@ -26,7 +27,7 @@ const SignUpScreen = ({navigation}:any) => {
 
       <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BasePage')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OnBoardUsers')}>
         <Text style={styles.buttonText}>Let's Create</Text>
       </TouchableOpacity>
     </View>
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: '#D5FF00', // Light yellow color
+    color: Colors.primaryTextColor, // Light yellow color
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: '#D5FF00', // Light yellow text
+    color: Colors.primaryTextColor, // Light yellow text
     fontSize: 18,
     fontWeight: 'bold',
   },

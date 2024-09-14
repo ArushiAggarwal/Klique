@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput , ScrollView} from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Colors } from '@/constants/Colors';
 
 const HomeScreen = () => {
   return (
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   },
   greeting: {
     fontSize: 24,
-    color: '#eff870',
+    color: Colors.primaryTextColor,
   },
   name: {
     fontSize: 32,
@@ -143,23 +144,23 @@ const styles = StyleSheet.create({
   },
   sectionTitleSocial: {
     fontSize: 18,
-    color: '#eff870',
+    color: Colors.primaryTextColor,
     paddingRight: 15   
   },
   sectionTitle: {
     fontSize: 18,
-    color: '#eff870',
+    color: Colors.primaryTextColor,
     marginBottom: 10,
   },
   sectionTitleTip:{
     fontSize: 18,
-    color: '#eff870',
+    color: Colors.primaryTextColor,
     marginBottom: 10,
     marginTop: 10
   },
   sectionTitleTrack:{
     fontSize: 18,
-    color: '#eff870',
+    color: Colors.primaryTextColor,
     marginBottom: 0,
     marginTop: 10,
   },

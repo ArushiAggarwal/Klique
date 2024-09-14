@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, BackHandler,
 import onboardingData from './onboardingData.json'; // Ensure this is the correct path to your JSON data
 import { ProgressBar } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '@/constants/Colors';
 
 const OnboardingUsers = ({ navigation }: any) => {
     const [currentStepIndex, setCurrentStepIndex] = useState(0); // To track the current question index
@@ -240,7 +241,7 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     nextButtonText: {
-        color: '#D5FF00',
+        color: Colors.primaryTextColor,
         fontSize: 18,
         fontWeight: 'bold',
     },
