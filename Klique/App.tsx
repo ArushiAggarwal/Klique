@@ -2,21 +2,21 @@ import React, { useEffect } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { View, Text, StyleSheet } from 'react-native'
-// import CelebrationPage from './screens/CelebrationPage'
-// import BasePage from './screens/protected-screens/BasePage'
 import { Colors } from './Constants/Colors'
 import SignUpScreen from './Components/SignUpScreen'
 import OnboardUser from './Components/OnboardUser'
+import Toast from 'react-native-toast-message'
+import CelebrationPage from './Components/CelebrationPage'
+import BasePage from './Components/Home/BasePage'
+
 
 const Stack = createNativeStackNavigator()
 
 // Splash Screen Component
 const SplashScreen = ({ navigation }:any) => {
   useEffect(() => {
-    // Navigate to HomeScreen after 3 seconds
     const timer = setTimeout(() => {
-      navigation.replace('Home')
-      // navigation.replace('BasePage')
+      navigation.replace('BasePage')
     }, 3000)
 
     // Cleanup the timer on component unmount
@@ -36,11 +36,12 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={SplashScreen} />
-        <Stack.Screen name="Home" component={SignUpScreen} />
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="OnBoardUsers" component={OnboardUser} />
-        {/* <Stack.Screen name="CelebrationPage" component={CelebrationPage} />
-        <Stack.Screen name="BasePage" component={BasePage} /> */}
+        <Stack.Screen name="CelebrationPage" component={CelebrationPage} />
+        <Stack.Screen name="BasePage" component={BasePage} />
       </Stack.Navigator>
+      <Toast />
     </NavigationContainer>
   )
 }

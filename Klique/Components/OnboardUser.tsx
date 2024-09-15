@@ -1,50 +1,58 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, Dimensions, TouchableOpacity, Text, FlatList, BackHandler } from 'react-native'
+import { View, StyleSheet, Dimensions, TouchableOpacity, Text, BackHandler } from 'react-native'
 import { Colors } from '../Constants/Colors'
 import { onboardingData } from './onboardingData'
 import { ProgressBar } from 'react-native-paper'
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import Toast from 'react-native-toast-message'
 
 const OnboardUser = ({ navigation }: any) => {
-  const [currentStepIndex, setCurrentStepIndex] = useState<number>(0); // To track the current question index
-  const [selectedAnswers, setSelectedAnswers] = useState<any>([]);
-  const steps = onboardingData.steps;
-  const currentStep: any = steps[currentStepIndex];
+  const [currentStepIndex, setCurrentStepIndex] = useState<number>(0) // To track the current question index
+  const [selectedAnswers, setSelectedAnswers] = useState<any>([])
+  const steps = onboardingData.steps
+  const currentStep: any = steps[currentStepIndex]
 
   const backAction = () => {
     if (currentStepIndex > 0) {
-      setCurrentStepIndex(currentStepIndex - 1);
-      return true; // Prevent default back action
+      setCurrentStepIndex(currentStepIndex - 1)
+      return true // Prevent default back action
     } else {
-      return false; // Allow default back action if on the first question
+      return false // Allow default back action if on the first question
     }
-  };
+  }
 
   // Handle hardware back button press
   useEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
-    return () => backHandler.remove(); // Cleanup on component unmount
-  }, [currentStepIndex]);
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction)
+    return () => backHandler.remove() // Cleanup on component unmount
+  }, [currentStepIndex])
 
   const handleNext = () => {
     if (currentStepIndex < steps.length - 1) {
-      setCurrentStepIndex(currentStepIndex + 1);
-      setSelectedAnswers([]); // Reset selections for the next question
+      setCurrentStepIndex(currentStepIndex + 1)
+      setSelectedAnswers([]) // Reset selections for the next question
     } else {
-      navigation.navigate('CelebrationPage'); // Navigate to the sign-up screen when done
+      navigation.navigate('CelebrationPage') // Navigate to the sign-up screen when done
     }
-  };
+  }
 
   const handleSelection = (answer: string) => {
     if (selectedAnswers.includes(answer)) {
-      setSelectedAnswers(selectedAnswers.filter((item: string) => item !== answer));
+      setSelectedAnswers(selectedAnswers.filter((item: string) => item !== answer))
     } else {
       if (!currentStep.selectionLimit || selectedAnswers.length < currentStep.selectionLimit) {
-        setSelectedAnswers([...selectedAnswers, answer]);
+        setSelectedAnswers([...selectedAnswers, answer])
+      }else{
+        Toast.show({
+          type: 'info', // or 'success' / 'error'
+          text1: 'Max limit reached',
+          text2: 'You have selected the maximum number of answers allowed.',
+          position: 'bottom',
+        })
       }
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -66,53 +74,24 @@ const OnboardUser = ({ navigation }: any) => {
       <Text style={styles.question}>{currentStep.question}</Text>
 
       <Text style={styles.instruction}>{currentStep.instruction || ' '}</Text>
-      {/* Icon List */}
-      {currentStep.options && Object.keys(currentStep.options[0]).includes('icon') && (
-        <FlatList
-          data={currentStep.options}
-          keyExtractor={(item, index) => item.value || item.title || index.toString()} // Ensure unique keys
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={[
-                styles.optionButtonIcon,
-                selectedAnswers.includes(item.value || item.title) && styles.selectedAnswerButton,
-              ]}
-              onPress={() => handleSelection(item.value || item.title)}
-            >
-              {/* Display the icon if available */}
-              {item.icon && (
-                <Icon name={item.icon} size={50} color="#FFFFFF" style={styles.icon} />
-              )}
-              <Text style={styles.optionTitle}>{item.title || item.label}</Text>
-              {item.description && <Text style={styles.optionDescription}>{item.description}</Text>}
-            </TouchableOpacity>
-          )}
-          contentContainerStyle={styles.optionsContainer}
-          numColumns={3}
-        />
-      )}
-
-      {/* Normal List */}
-      {currentStep.options && !Object.keys(currentStep.options[0]).includes('icon') && (
-        <FlatList
-          data={currentStep.options}
-          keyExtractor={(item, index) => item.value || item.title || index.toString()} // Ensure unique keys
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={[
-                styles.optionButton,
-                selectedAnswers.includes(item.value || item.title) && styles.selectedAnswerButton,
-              ]}
-              onPress={() => handleSelection(item.value || item.title)}
-            >
-              <Text style={styles.optionTitle}>{item.title || item.label}</Text>
-              {item.description && <Text style={styles.optionDescription}>{item.description}</Text>}
-            </TouchableOpacity>
-          )}
-          contentContainerStyle={styles.optionsContainer}
-          numColumns={2}
-        />
-      )}
+      <View style={styles.optionsContainer}>
+        {currentStep.options.map((item: any, index: any) => (
+          <TouchableOpacity
+            key={item.value || item.title || index.toString()} // Ensure unique keys
+            style={[
+              item.icon ? styles.optionButtonIcon : styles.optionButton,
+              selectedAnswers.includes(item.value || item.title) && styles.selectedAnswerButton,
+            ]}
+            onPress={() => handleSelection(item.value || item.title)}
+          >
+            {item.icon && (
+              <Icon name={item.icon} size={50} color="#FFFFFF" style={styles.icon} />
+            )}
+            <Text style={styles.optionTitle}>{item.title || item.label}</Text>
+            {item.description && <Text style={styles.optionDescription}>{item.description}</Text>}
+          </TouchableOpacity>
+        ))}
+      </View>
 
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
         <Text style={styles.nextButtonText}>Next</Text>
@@ -168,18 +147,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   optionsContainer: {
-    alignItems: 'center',
-    marginBottom: 20,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginBottom: 20
   },
   optionButton: {
     borderColor: '#FFFFFF',
     borderWidth: 1,
-    borderRadius: 10,
-    paddingVertical: 5,
-    paddingHorizontal: 6,
+    borderRadius: 15,
+    paddingTop: 12,
+    paddingHorizontal:10,
+    display:'flex',
     margin: 5,
-    width: (width - 60) / 2, // Half the width of the screen minus padding for two columns
-    flexGrow: 1, // Allow stretch if only one item is in the row
     alignItems: 'center',
   },
   optionButtonIcon: {
@@ -189,16 +169,15 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     paddingHorizontal: 6,
     margin: 5,
-    width: (width - 60) / 3, // Half the width of the screen minus padding for two columns
-    flexGrow: 1, // Allow stretch if only one item is in the row
-    alignItems: 'center',
+    width: (width - 17) / 3.5, // Adjust to fit exactly three items per row
+    alignItems: 'center'
   },
   icon: {
     marginBottom: 20,
   },
   optionTitle: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'bold',
     marginBottom: 15,
     textAlign: 'center',
@@ -215,12 +194,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   nextButton: {
-    top: 0,
     backgroundColor: '#0056FF',
     paddingVertical: 10,
+    paddingHorizontal: 40,
     borderRadius: 10,
-    alignItems: 'center',
-    marginVertical: 10
+    alignSelf: 'center', // Center the button and make it wrap content
+    marginVertical: 10,  // Optional: to add some vertical spacing
   },
   nextButtonText: {
     color: Colors.primaryTextColor,
