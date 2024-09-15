@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator()
 const SplashScreen = ({ navigation }:any) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('BasePage')
+      navigation.replace('SignUpScreen')
     }, 3000)
 
     // Cleanup the timer on component unmount

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, Dimensions, TouchableOpacity, Text, BackHandler } from 'react-native'
 import { Colors } from '../Constants/Colors'
-import { onboardingData } from './onboardingData'
+import { onboardingData } from '../Data/onboardingData'
 import { ProgressBar } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Toast from 'react-native-toast-message'
