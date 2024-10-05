@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, Dimensions, TouchableOpacity, Text, BackHandler } from 'react-native'
+import { View, StyleSheet, Dimensions, TouchableOpacity, Text, BackHandler, ScrollView } from 'react-native'
 import { Colors } from '../Constants/Colors'
 import { onboardingData } from '../Data/onboardingData'
 import { ProgressBar } from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Toast from 'react-native-toast-message'
+import CustomTextLabel from '../Helpers/CustomTextLabel'
+import CustomText from '../Helpers/CustomText'
 
 const OnboardUser = ({ navigation }: any) => {
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0) // To track the current question index
@@ -55,6 +57,7 @@ const OnboardUser = ({ navigation }: any) => {
   }
 
   return (
+    <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
     <View style={styles.container}>
       {/* Back button in the top left */}
       {currentStepIndex > 0 && (
@@ -71,9 +74,9 @@ const OnboardUser = ({ navigation }: any) => {
         style={styles.progressBar}
       />
 
-      <Text style={styles.question}>{currentStep.question}</Text>
+      <CustomTextLabel style={styles.question}>{currentStep.question}</CustomTextLabel>
 
-      <Text style={styles.instruction}>{currentStep.instruction || ' '}</Text>
+      {currentStep.instruction && <Text style={styles.instruction}>{currentStep.instruction || ' '}</Text>}
       <View style={styles.optionsContainer}>
         {currentStep.options.map((item: any, index: any) => (
           <TouchableOpacity
@@ -87,20 +90,26 @@ const OnboardUser = ({ navigation }: any) => {
             {item.icon && (
               <Icon name={item.icon} size={50} color="#FFFFFF" style={styles.icon} />
             )}
-            <Text style={styles.optionTitle}>{item.title || item.label}</Text>
+            <CustomText style={styles.optionTitle}>{item.title || item.label}</CustomText>
             {item.description && <Text style={styles.optionDescription}>{item.description}</Text>}
           </TouchableOpacity>
         ))}
       </View>
 
       <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-        <Text style={styles.nextButtonText}>Next</Text>
+        <CustomText style={styles.nextButtonText}>Next</CustomText>
       </TouchableOpacity>
     </View>
+    </ScrollView>
   )
 }
 const { width } = Dimensions.get('window')
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1, // This ensures the ScrollView takes the entire space
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   backButton: {
     position: 'absolute',
     top: 20,
@@ -117,10 +126,11 @@ const styles = StyleSheet.create({
     color: '#AAAAAA',
     marginTop: 40,
     marginBottom: 10,
+    fontFamily: 'Montserrat-Medium'
   },
   question: {
     color: '#f0f871',
-    fontSize: 50,
+    fontSize: 46,
     fontWeight: 'bold',
     marginBottom: 10,
   },
@@ -177,14 +187,14 @@ const styles = StyleSheet.create({
   },
   optionTitle: {
     color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 14,
+    // fontWeight: 'bold',
     marginBottom: 15,
     textAlign: 'center',
   },
   optionDescription: {
     color: '#AAAAAA',
-    fontSize: 12,
+    fontSize: 10,
     textAlign: 'center',
   },
   progressBar: {
@@ -204,7 +214,7 @@ const styles = StyleSheet.create({
   nextButtonText: {
     color: Colors.primaryTextColor,
     fontSize: 18,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
 })
 

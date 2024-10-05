@@ -1,18 +1,29 @@
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import CustomText from '../Helpers/CustomText';
 
 const CelebrationPage = ({ navigation }:any) => {
+
+    useEffect(() => {
+    const timer = setTimeout(() => {
+        navigation.replace('BasePage')
+    }, 3000)
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer)
+    }, [navigation])
+
     return (
         <View style={styles.container}>
             {/* Celebration Icon */}
             <Icon name="celebration" style={styles.icon} size={90} color="#FF6B45" />
 
             {/* Main Heading */}
-            <Text style={styles.mainHeading}>Wohoo!</Text>
+            <CustomText style={styles.mainHeading}>Wohoo!</CustomText>
 
             {/* Sub Heading */}
-            <Text style={styles.subHeading}>Hey Akshita!</Text>
+            <CustomText style={styles.subHeading}>Hey Akshita!</CustomText>
 
             {/* Message */}
             <Text style={styles.message}>
@@ -41,13 +52,11 @@ const styles = StyleSheet.create({
     },
     mainHeading: {
         fontSize: 40,
-        fontWeight: 'bold',
         color: '#f0f871', // Yellow color for the main heading
         marginBottom: 60,
     },
     subHeading: {
         fontSize: 36,
-        fontWeight: 'bold',
         color: '#FFFFFF', // White color for the subheading
         marginBottom: 30,
     },
@@ -56,12 +65,14 @@ const styles = StyleSheet.create({
         color: '#FFFFFF', // White color for the message
         textAlign: 'center',
         marginBottom: 30,
+        fontFamily: 'Montserrat-Medium'
     },
     callToAction: {
         fontSize: 20,
         color: '#FF6B45', // Orange color for the call to action
         textAlign: 'center',
         fontWeight: 'bold',
+        fontFamily: 'Montserrat-Medium'
     },
 });
 

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { Colors } from './Constants/Colors'
 import SignUpScreen from './Components/SignUpScreen'
 import OnboardUser from './Components/OnboardUser'
 import Toast from 'react-native-toast-message'
 import CelebrationPage from './Components/CelebrationPage'
 import BasePage from './Components/Home/BasePage'
-
+import CustomText from './Helpers/CustomText'
 
 const Stack = createNativeStackNavigator()
 
@@ -17,6 +17,7 @@ const SplashScreen = ({ navigation }:any) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace('SignUpScreen')
+      // navigation.replace('BasePage')
     }, 3000)
 
     // Cleanup the timer on component unmount
@@ -25,8 +26,8 @@ const SplashScreen = ({ navigation }:any) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to</Text>
-      <Text style={styles.brandText}>Klique</Text>
+      <CustomText style={styles.welcomeText}>Welcome to</CustomText>
+      <CustomText style={styles.brandText}>Klque</CustomText>
     </View>
   )
 }
@@ -54,13 +55,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   welcomeText: {
+    fontFamily: 'DelaGothicOne-Regular',
     color: '#FFFFFF', // White text
     fontSize: 30,
-    fontWeight: 'bold',
   },
   brandText: {
+    fontFamily: 'DelaGothicOne-Regular',
     color: Colors.primaryTextColor, // Light yellow text
     fontSize: 60,
-    fontWeight: 'bold',
   },
 })

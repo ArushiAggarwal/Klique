@@ -2,6 +2,11 @@ import * as React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import HomeScreen from './HomeScreen'
+import Ideate from './Ideate'
+import Plan from './Plan'
+import Track from './Track'
+import Profile from './Profile'
+import IdeasDump from './IdeasDump'
 
 const Tab = createBottomTabNavigator()
 
@@ -38,7 +43,9 @@ const screenOptions = ({ route }:any) => ({
   tabBarInactiveTintColor: '#888', // Inactive icon color
   tabBarStyle: {
     backgroundColor: '#1A1A1A', // Tab bar background color
-    borderTopWidth: 0, // Remove top border
+    borderTopWidth: 1, // Remove top border
+    borderColor: '#3A3A3A'
+
   },
 });
 
@@ -47,9 +54,11 @@ export default function BasePage() {
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Learn" component={HomeScreen} />
-      <Tab.Screen name="Ideate" component={HomeScreen} />
-      <Tab.Screen name="Plan" component={HomeScreen} />
-      <Tab.Screen name="Track" component={HomeScreen} />
+      <Tab.Screen name="Ideate" component={Ideate} />
+      <Tab.Screen name="Plan" component={Plan} />
+      <Tab.Screen name="Track" component={Track} />
+      <Tab.Screen name="Profile" component={Profile}  options={{ tabBarButton: () => null }} />
+      <Tab.Screen name="IdeasDump" component={IdeasDump}  options={{ tabBarButton: () => null }} />
     </Tab.Navigator>
   )
 }

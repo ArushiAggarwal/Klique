@@ -1,4 +1,4 @@
-# Klique
+# Klque
 Simplifying Content Creation
 
 Prerequisite

@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Colors } from '../Constants/Colors';
+import CustomText from '../Helpers/CustomText';
+import CustomTextLabel from '../Helpers/CustomTextLabel';
 
 const SignUpScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+      <CustomTextLabel style={styles.title}>Sign Up</CustomTextLabel>
 
       <TextInput
         style={styles.input}
@@ -28,7 +30,7 @@ const SignUpScreen = ({ navigation }: any) => {
       <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OnBoardUsers')}>
-        <Text style={styles.buttonText}>Let's Create</Text>
+        <CustomText style={styles.buttonText}>Let's Create</CustomText>
       </TouchableOpacity>
     </View>
   );
@@ -44,7 +46,6 @@ const styles = StyleSheet.create({
   title: {
     color: Colors.primaryTextColor, // Light yellow color
     fontSize: 40,
-    fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 40,
   },
@@ -64,15 +65,16 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   button: {
-    backgroundColor: '#0056FF', // Blue button
-    paddingVertical: 15,
+    backgroundColor: '#0056FF',
+    paddingVertical: 10,
+    paddingHorizontal: 40,
     borderRadius: 10,
-    alignItems: 'center',
+    alignSelf: 'center', // Center the button and make it wrap content
+    marginVertical: 10,  // Optional: to add some vertical spacing
   },
   buttonText: {
     color: Colors.primaryTextColor, // Light yellow text
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

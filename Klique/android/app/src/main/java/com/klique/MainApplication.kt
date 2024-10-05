@@ -1,4 +1,4 @@
-package com.klique
+package com.klque
 
 import android.app.Application
 import com.facebook.react.PackageList
