@@ -4,32 +4,15 @@ import { Colors } from '../Constants/Colors';
 import CustomText from '../Helpers/CustomText';
 import CustomTextLabel from '../Helpers/CustomTextLabel';
 
-const SignUpScreen = ({ navigation }: any) => {
+const LoginScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
-      <CustomTextLabel style={styles.title}>Sign Up</CustomTextLabel>
+      <CustomTextLabel style={styles.title}>Login</CustomTextLabel>
 
       <TextInput
         style={styles.input}
-        placeholder="First Name"
+        placeholder="Email/Phone"
         placeholderTextColor="#AAAAAA"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Last Name"
-        placeholderTextColor="#AAAAAA"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email id"
-        placeholderTextColor="#AAAAAA"
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Phone Number"
-        placeholderTextColor="#AAAAAA"
-        keyboardType="phone-pad"
       />
       <TextInput
         style={styles.input}
@@ -39,13 +22,13 @@ const SignUpScreen = ({ navigation }: any) => {
       />
 
       <Text style={styles.forgotPasswordText}>
-        <Text onPress={() => navigation.navigate('LoginScreen')}>Login</Text>
+        <Text onPress={() => navigation.navigate('SignUpScreen')}>Sign Up</Text>
         <Text> | </Text>
         <Text>Forgot Password?</Text>
       </Text>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OnBoardUsers')}>
-        <CustomText style={styles.buttonText}>Let's Create</CustomText>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OtpValidate')}>
+        <CustomText style={styles.buttonText}>Login</CustomText>
       </TouchableOpacity>
     </View>
   );
@@ -95,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default LoginScreen;

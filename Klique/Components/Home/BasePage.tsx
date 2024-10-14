@@ -7,6 +7,7 @@ import Plan from './Plan'
 import Track from './Track'
 import Profile from './Profile'
 import IdeasDump from './IdeasDump'
+import ContentDetails from './ContentDetails'
 
 const Tab = createBottomTabNavigator()
 
@@ -53,11 +54,12 @@ export default function BasePage() {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Learn" component={HomeScreen} />
+      {/* <Tab.Screen name="Learn" component={HomeScreen} /> */}
       <Tab.Screen name="Ideate" component={Ideate} />
       <Tab.Screen name="Plan" component={Plan} />
       <Tab.Screen name="Track" component={Track} />
       <Tab.Screen name="Profile" component={Profile}  options={{ tabBarButton: () => null }} />
+      <Tab.Screen name="ContentDetails" component={ContentDetails}  options={{ tabBarButton: () => null }} />
       <Tab.Screen name="IdeasDump" component={IdeasDump}  options={{ tabBarButton: () => null }} />
     </Tab.Navigator>
   )

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Colors } from '../../Constants/Colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }:any) => {
             <CustomText style={styles.name}>Akshita!</CustomText>
           </View>
           <View style={styles.icons}>
-            <Icon name="chat-bubble-outline" size={36} color="#FFFFFF" />
+            {/* <Icon name="chat-bubble-outline" size={36} color="#FFFFFF" /> */}
             <Icon name="search" size={36} color="#FFFFFF" style={styles.iconSpacing} />
             <TouchableOpacity onPress={navigateToProfile}>
               <Icon name="account-circle" size={36} color="#FFFFFF" style={styles.iconSpacing} />
@@ -36,11 +36,9 @@ const HomeScreen = ({ navigation }:any) => {
 
         {/* Search Bar */}
         <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="What are you creating today?"
-            placeholderTextColor="#FFFFFF"
-          />
+          <TouchableOpacity onPress={() => navigation.navigate('Ideate')}>
+            <Text style={styles.searchInput}>What are you creating today?</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Content Goals */}
@@ -86,10 +84,11 @@ const HomeScreen = ({ navigation }:any) => {
                 </View>
               </View>
               <View>
-                <FontAwesome name={'instagram'} size={30} style={styles.socialIcon} />
+                <FontAwesome name={'instagram'} size={24} style={styles.socialIcon} />
               </View>
             </View>
             <Text style={styles.sectionTitleTrack}>Stay on track</Text>
+            <Text style={styles.contentPosted}>Content Posted</Text>
             <View style={styles.progressContainer}>
               <ProgressCircle total={5} completed={2} size={70} />
             </View>
@@ -111,20 +110,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
   },
   innerContainer: {
-    padding: 10, // Add padding to inner container
+    paddingHorizontal: 20, // Add padding to inner container
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical:20
   },
   greeting: {
-    fontSize: 24,
+    fontSize: 20,
     color: Colors.primaryTextColor,
     fontFamily: 'Montserrat-Medium'
   },
   name: {
-    fontSize: 32,
+    fontSize: 30,
     color: '#FFFFFF',
   },
   icons: {
@@ -134,29 +134,33 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   searchContainer: {
-    marginVertical: 12,
+    paddingTop:20,
+    paddingBottom:30
   },
   searchInput: {
-    backgroundColor: '#333333',
-    borderRadius: 30,
-    padding: 8,
-    paddingHorizontal: 10,
-    color: '#FFFFFF',
-    borderColor: '#FFFFFF',
+    borderRadius: 20,
+    paddingLeft: 28,
+    color: '#F5F5F5',
+    borderColor: '#F5F5F5',
     borderWidth: 1,
+    fontSize: 13,
+    paddingVertical:16
   },
   section: {
-    marginBottom: 10,
+    marginTop: 8,
+    marginBottom: 20
   },
   sectionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'stretch',
-    height: 326
+    height: 326,
+    gap: 20
   },
   sectionHalf: {
     flex: 1,
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
+    gap:0
   },
   sectionTitleSocial: {
     fontSize: 16,
@@ -165,30 +169,31 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium'
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 15,
     color: Colors.primaryTextColor,
     marginBottom: 10,
-    fontFamily: 'Montserrat-Medium'
+    fontFamily: 'Montserrat-SemiBold'
   },
   sectionTitleTip: {
     fontSize: 16,
     color: Colors.primaryTextColor,
     marginBottom: 10,
     marginTop: 5,
-    fontFamily: 'Montserrat-Medium'
+    fontFamily: 'Montserrat-SemiBold'
   },
   sectionTitleTrack: {
     fontSize: 16,
     color: Colors.primaryTextColor,
     marginBottom: 0,
     marginTop: 10,
-    fontFamily: 'Montserrat-Medium'
+    fontFamily: 'Montserrat-SemiBold'
   },
   contentGoals: {
     backgroundColor: '#444444',
     borderRadius: 10,
-    padding: 10,
-    fontFamily: 'Montserrat-Medium'
+    padding: 12,
+    fontFamily: 'Montserrat-Regular',
+    minHeight:120
   },
   contentText: {
     fontSize: 13,
@@ -196,7 +201,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium'
   },
   highlightText: {
-    fontFamily: 'Montserrat-Medium'
+    fontFamily: 'Montserrat-Bold'
   },
   socialIcons: {
     flexDirection: 'row',
@@ -227,17 +232,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#333333',
     borderRadius: 10,
-    padding: 15,
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'space-between'
   },
   scheduleText: {
-    fontSize: 10,
+    fontSize: 8,
     color: '#FFFFFF',
     marginBottom: 5,
   },
   timeText: {
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#FFFFFF',
     fontFamily: 'Montserrat-Medium'
@@ -250,9 +255,9 @@ const styles = StyleSheet.create({
   timeIndicationText: {
     color: '#eb7952',
     paddingLeft: 2,
-    marginTop: -5,
-    fontFamily: 'Montserrat-Medium'
-
+    marginTop: 0,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 10
   },
   progressContainer: {
     // backgroundColor: '#444444',
@@ -275,6 +280,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#FFFFFF',
   },
+  contentPosted:{
+    fontSize:10
+  }
 });
 
 

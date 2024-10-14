@@ -141,12 +141,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 18,
     marginBottom: 10,
-    borderColor: '#F5F5F5', // White border color for button
+    borderColor: '#848282', // White border color for button
     borderWidth: 1,
   },
   buttonText: {
-    color: '#FFFFFF',
-    fontSize: 14,
+    color: '#848282',
+    fontSize: 12,
+    fontFamily: 'Montserrat-Regular'
   },
   footer: {
     flexDirection: 'row',
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 0,
     paddingHorizontal: 5,
-    borderColor: '#F5F5F5',
+    borderColor: '#848282',
     borderRadius: 25,
     borderWidth: 1,
     flex: 1,
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
   },
   footerIcon: {
     paddingHorizontal: 5,
-    color: '#F5F5F5',
+    color: '#848282',
   },
   footerIcon_ham: {
     marginTop: 10,
@@ -200,6 +201,7 @@ const styles = StyleSheet.create({
   popoverText: {
     fontSize: 14,
     color: '#fff',
+    fontFamily: 'Montserrat-Regular'
   },
 });
 

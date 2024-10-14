@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1A1A1A',
     paddingHorizontal: 20,
-    paddingTop: 40,
+    paddingTop: 140,
   },
   progressText: {
     color: '#AAAAAA',
@@ -130,13 +130,16 @@ const styles = StyleSheet.create({
   },
   question: {
     color: '#f0f871',
-    fontSize: 46,
-    fontWeight: 'bold',
+    fontSize: 40,
     marginBottom: 10,
+    fontFamily: 'Montserrat-ExtraBold',
+    // fontWeight:900
   },
   instruction: {
     color: '#AAAAAA',
     marginBottom: 30,
+    fontFamily: 'Montserrat',
+    fontSize: 12
   },
   answerButton: {
     borderColor: '#FFFFFF',
@@ -150,27 +153,28 @@ const styles = StyleSheet.create({
     flexGrow: 1, // Allow stretch if only one item is in the row
   },
   selectedAnswerButton: {
-    backgroundColor: '#0056FF',
+    backgroundColor: '#EB7A52',
+    borderColor: '#EB7A52',
   },
   answerText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
+    fontSize: 13
   },
   optionsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginBottom: 20
+    marginBottom: 20,
   },
   optionButton: {
     borderColor: '#FFFFFF',
     borderWidth: 1,
-    borderRadius: 15,
-    paddingTop: 12,
-    paddingHorizontal:10,
+    borderRadius: 10,
+    paddingHorizontal:15,
     display:'flex',
-    margin: 5,
-    alignItems: 'center',
+    margin: 3,
+    paddingVertical: 8
   },
   optionButtonIcon: {
     borderColor: '#FFFFFF',
@@ -187,13 +191,11 @@ const styles = StyleSheet.create({
   },
   optionTitle: {
     color: '#FFFFFF',
-    fontSize: 14,
-    // fontWeight: 'bold',
-    marginBottom: 15,
+    fontSize: 13,
     textAlign: 'center',
   },
   optionDescription: {
-    color: '#AAAAAA',
+    color: '#F5F5F5',
     fontSize: 10,
     textAlign: 'center',
   },
@@ -205,11 +207,11 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     backgroundColor: '#0056FF',
-    paddingVertical: 10,
-    paddingHorizontal: 40,
+    paddingVertical: 6,
+    paddingHorizontal: 30,
     borderRadius: 10,
     alignSelf: 'center', // Center the button and make it wrap content
-    marginVertical: 10,  // Optional: to add some vertical spacing
+    marginVertical: 60,  // Optional: to add some vertical spacing
   },
   nextButtonText: {
     color: Colors.primaryTextColor,

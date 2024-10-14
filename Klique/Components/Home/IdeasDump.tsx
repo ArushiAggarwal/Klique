@@ -61,7 +61,7 @@ const IdeasDump = () => {
   };
 
   // Function to update the text of a task
-  const updateTaskText = (id, text) => {
+  const updateTaskText = (id:any, text:any) => {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
         return { ...task, text };

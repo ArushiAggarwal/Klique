@@ -9,6 +9,8 @@ import Toast from 'react-native-toast-message'
 import CelebrationPage from './Components/CelebrationPage'
 import BasePage from './Components/Home/BasePage'
 import CustomText from './Helpers/CustomText'
+import LoginScreen from './Components/LoginScreen'
+import OtpValidate from './Components/OtpValidate'
 
 const Stack = createNativeStackNavigator()
 
@@ -38,6 +40,8 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="OtpValidate" component={OtpValidate} />
         <Stack.Screen name="OnBoardUsers" component={OnboardUser} />
         <Stack.Screen name="CelebrationPage" component={CelebrationPage} />
         <Stack.Screen name="BasePage" component={BasePage} />

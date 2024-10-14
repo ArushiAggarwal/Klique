@@ -5,7 +5,7 @@ import CustomText from '../../Helpers/CustomText';
 import Calendar from '../Common/Calendar';
 
 
-const Track = () => {
+const Track = ({ navigation }:any) => {
   
   const [tasks] = useState([
     { id: '1', title: 'Task 1', tag: 'Research' },
@@ -41,10 +41,12 @@ const Track = () => {
       {/* Tasks Section */}
       <ScrollView style={styles.tasksContainer}>
         {tasks.map((item) => (
-          <View key={item.id} style={styles.taskItem}>
-            <Text style={styles.taskText}>{item.title}</Text>
-            {item.tag && <Text style={styles.taskTag}>{item.tag}</Text>}
-          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('ContentDetails')}>
+            <View key={item.id} style={styles.taskItem}>
+              <Text style={styles.taskText}>{item.title}</Text>
+              {item.tag && <Text style={styles.taskTag}>{item.tag}</Text>}
+            </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
@@ -100,22 +102,23 @@ const styles = StyleSheet.create({
     padding: 15,
     marginHorizontal: 10,
     marginBottom: 15,
+    minHeight:100
   },
   taskText: {
-    color: '#FFF',
-    fontSize: 18,
+    color: '#F5F5F5',
+    fontSize: 12,
     fontWeight: 'bold',
   },
   taskTag: {
-    backgroundColor: '#555',
-    color: '#FFF',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 10,
-    fontSize: 12,
+    backgroundColor: '#F5F5F5',
+    color: '#000',
+    paddingHorizontal: 8,
+    paddingVertical: 1,
+    borderRadius: 15,
+    fontSize: 10,
     position: 'absolute',
-    right: 15,
-    top: 15,
+    right: 8,
+    top: 8,
   },
 });
 

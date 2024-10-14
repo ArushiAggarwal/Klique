@@ -1,13 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Colors } from '../../Constants/Colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CustomText from '../../Helpers/CustomText';
+import ProgressCircle from '../Common/ProgressCircle';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }:any) => {
+
+  const navigateToProfile = () => {
+    navigation.navigate('Profile')
+  }
+
+  const navigateToIdeasDump = () => {
+    navigation.navigate('IdeasDump')
+  }
+
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView  style={styles.container}>
       <View style={styles.innerContainer}>
         {/* Header Section */}
         <View style={styles.header}>
@@ -18,7 +28,9 @@ const HomeScreen = () => {
           <View style={styles.icons}>
             <Icon name="chat-bubble-outline" size={36} color="#FFFFFF" />
             <Icon name="search" size={36} color="#FFFFFF" style={styles.iconSpacing} />
-            <Icon name="account-circle" size={36} color="#FFFFFF" style={styles.iconSpacing} />
+            <TouchableOpacity onPress={navigateToProfile}>
+              <Icon name="account-circle" size={36} color="#FFFFFF" style={styles.iconSpacing} />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -45,8 +57,8 @@ const HomeScreen = () => {
         <View style={styles.section}>
           <View style={styles.socialIcons}>
             <Text style={styles.sectionTitleSocial}>Socials:</Text>
-            <FontAwesome name={'instagram'} size={40} style={styles.socialIcon} />
-            <FontAwesome name={'twitter'} size={40} style={styles.socialIcon} />
+            <FontAwesome name={'instagram'} size={20} style={styles.socialIcon} />
+            <FontAwesome name={'twitter'} size={20} style={styles.socialIcon} />
           </View>
         </View>
 
@@ -54,12 +66,14 @@ const HomeScreen = () => {
         <View style={styles.sectionRow}>
           <View style={styles.sectionHalf}>
             <Text style={styles.sectionTitle}>Ideas dump!</Text>
+            <TouchableOpacity onPress={navigateToIdeasDump} >
             <View style={styles.ideaDump}>
-              <Text style={styles.ideaText}>Office Outfit Reel. Butterfly eye makeup look</Text>
-              <Text style={styles.ideaText}>Friends meet up vlog</Text>
-              <Text style={styles.ideaText}>Delhi Food trip highlight</Text>
-              <Text style={styles.ideaText}>Nykaa Brand Reel</Text>
+              <Text style={styles.ideaText}>Office Outfit Reel. Butterfly eye makeup look. 
+                Friends meet up vlog.
+                Delhi Food trip highlight.
+                Nykaa Brand Reel</Text>
             </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.sectionHalf}>
             <Text style={styles.sectionTitle}>Posting Schedule</Text>
@@ -72,23 +86,20 @@ const HomeScreen = () => {
                 </View>
               </View>
               <View>
-                <FontAwesome name={'instagram'} size={40} style={styles.socialIcon} />
+                <FontAwesome name={'instagram'} size={30} style={styles.socialIcon} />
               </View>
             </View>
             <Text style={styles.sectionTitleTrack}>Stay on track</Text>
             <View style={styles.progressContainer}>
-              <Text style={styles.progressText}>2/15</Text>
+              <ProgressCircle total={5} completed={2} size={70} />
+            </View>
+            <Text style={styles.sectionTitleTip}>Tip of the day!</Text>
+            <View style={styles.tipContainer}>
+              <Text style={styles.tipText}>Prioritise authentic visuals over highly edited videos.</Text>
             </View>
           </View>
         </View>
 
-        {/* Tip of the Day */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitleTip}>Tip of the day!</Text>
-          <View style={styles.tipContainer}>
-            <Text style={styles.tipText}>Prioritise authentic visuals over highly edited videos.</Text>
-          </View>
-        </View>
       </View>
     </ScrollView>
   );
@@ -100,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
   },
   innerContainer: {
-    padding: 20, // Add padding to inner container
+    padding: 10, // Add padding to inner container
   },
   header: {
     flexDirection: 'row',
@@ -123,48 +134,51 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   searchContainer: {
-    marginVertical: 30,
+    marginVertical: 12,
   },
   searchInput: {
-    backgroundColor: '#333333',
+    // backgroundColor: '#333333',
     borderRadius: 30,
-    padding: 10,
-    paddingLeft: 30,
+    padding: 8,
+    paddingHorizontal: 10,
     color: '#FFFFFF',
     borderColor: '#FFFFFF',
     borderWidth: 1,
   },
   section: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   sectionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'stretch',
+    height: 326
   },
   sectionHalf: {
-    width: '48%',
+    flex: 1,
+    marginHorizontal: 5,
   },
   sectionTitleSocial: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.primaryTextColor,
     paddingRight: 15,
     fontFamily: 'Montserrat-Medium'
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.primaryTextColor,
     marginBottom: 10,
     fontFamily: 'Montserrat-Medium'
   },
   sectionTitleTip: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.primaryTextColor,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 5,
     fontFamily: 'Montserrat-Medium'
   },
   sectionTitleTrack: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.primaryTextColor,
     marginBottom: 0,
     marginTop: 10,
@@ -173,11 +187,11 @@ const styles = StyleSheet.create({
   contentGoals: {
     backgroundColor: '#444444',
     borderRadius: 10,
-    padding: 15,
+    padding: 10,
     fontFamily: 'Montserrat-Medium'
   },
   contentText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#FFFFFF',
     fontFamily: 'Montserrat-Medium'
   },
@@ -192,19 +206,21 @@ const styles = StyleSheet.create({
     marginRight: 10,
     backgroundColor: '#423f3f',
     padding: 10,
-    borderRadius: 50,
+    borderRadius: 40,
     color: '#fff'
   },
   ideaDump: {
     backgroundColor: '#444444',
     borderRadius: 10,
     padding: 15,
+    height: '100%'
   },
   ideaText: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#FFFFFF',
     marginBottom: 5,
-    fontFamily: 'Montserrat-Medium'
+    fontFamily: 'Montserrat-Medium',
+    lineHeight: 16
   },
   schedule: {
     display: 'flex',
@@ -239,26 +255,27 @@ const styles = StyleSheet.create({
 
   },
   progressContainer: {
-    backgroundColor: '#444444',
+    // backgroundColor: '#444444',
     borderRadius: 50,
-    padding: 20,
+    padding: 10,
     marginTop: 10,
     alignItems: 'center',
   },
   progressText: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#FF6B45',
     fontWeight: 'bold',
   },
   tipContainer: {
     backgroundColor: '#444444',
     borderRadius: 10,
-    padding: 15,
+    padding: 12,
   },
   tipText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#FFFFFF',
   },
 });
+
 
 export default HomeScreen;

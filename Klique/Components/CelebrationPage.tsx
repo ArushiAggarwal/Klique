@@ -7,7 +7,7 @@ const CelebrationPage = ({ navigation }:any) => {
 
     useEffect(() => {
     const timer = setTimeout(() => {
-        navigation.replace('BasePage')
+        // navigation.replace('BasePage')
     }, 3000)
 
     // Cleanup the timer on component unmount
@@ -51,28 +51,30 @@ const styles = StyleSheet.create({
         tintColor: '#FF6B45', // Adjust color to match design
     },
     mainHeading: {
-        fontSize: 40,
+        fontSize: 30,
         color: '#f0f871', // Yellow color for the main heading
         marginBottom: 60,
     },
     subHeading: {
-        fontSize: 36,
+        fontSize: 30,
         color: '#FFFFFF', // White color for the subheading
         marginBottom: 30,
     },
     message: {
         fontSize: 20,
         color: '#FFFFFF', // White color for the message
-        textAlign: 'center',
+        textAlign: 'justify',
         marginBottom: 30,
-        fontFamily: 'Montserrat-Medium'
+        fontFamily: 'Montserrat-Regular',
+        maxWidth:250
     },
     callToAction: {
         fontSize: 20,
         color: '#FF6B45', // Orange color for the call to action
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontFamily: 'Montserrat-Medium'
+        textAlign: 'justify',
+        // fontWeight: 'bold',
+        fontFamily: 'Montserrat-Regular',
+        maxWidth:250
     },
 });
 

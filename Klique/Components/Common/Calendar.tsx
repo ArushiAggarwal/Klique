@@ -48,12 +48,12 @@ const Calendar = () => {
     <View style={styles.calendarContainer}>
       <View style={styles.monthYearContainer}>
         <TouchableOpacity onPress={goToPreviousMonth}>
-          <Icon name="keyboard-arrow-left" size={20} color="#FFFFFF" style={styles.arrowIcon} />
+          <Icon name="keyboard-arrow-left" size={20} color="#636262" style={styles.arrowIcon} />
         </TouchableOpacity>
         <CustomText style={styles.monthText}>{monthName}</CustomText>
-        <CustomText style={styles.yearText}>{year}</CustomText>
+        <Text style={styles.yearText}>{year}</Text>
         <TouchableOpacity onPress={goToNextMonth}>
-          <Icon name="keyboard-arrow-right" size={20} color="#FFFFFF" style={styles.arrowIcon} />
+          <Icon name="keyboard-arrow-right" size={20} color="#636262" style={styles.arrowIcon} />
         </TouchableOpacity>
 
         {/* Two-line Hamburger Menu Button */}
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: '#FF6B45',
     marginLeft: 5,
+    fontFamily: 'Montserrat-Bold'
   },
   arrowIcon: {
     paddingHorizontal: 10,
@@ -162,13 +163,15 @@ const styles = StyleSheet.create({
   },
   weekDayLabel:{
     color: '#8A8A8A',
-    fontSize: 10,
-    fontWeight: 'bold',
-    paddingBottom: 6
+    fontSize: 12,
+    // fontWeight: 'bold',
+    paddingBottom: 8,
+    fontFamily: 'Montserrat-Bold'
   },
   weekDayNumber: {
     color: '#FFFFFF',
-    fontSize: 12
+    fontSize: 12,
+    fontFamily: 'Montserrat-Bold'
   },
 });
 

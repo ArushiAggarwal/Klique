@@ -4,48 +4,27 @@ import { Colors } from '../Constants/Colors';
 import CustomText from '../Helpers/CustomText';
 import CustomTextLabel from '../Helpers/CustomTextLabel';
 
-const SignUpScreen = ({ navigation }: any) => {
+const OtpValidate = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
-      <CustomTextLabel style={styles.title}>Sign Up</CustomTextLabel>
+      <CustomTextLabel style={styles.title}>Otp Verify</CustomTextLabel>
 
       <TextInput
         style={styles.input}
-        placeholder="First Name"
+        placeholder="Enter OTP"
         placeholderTextColor="#AAAAAA"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Last Name"
-        placeholderTextColor="#AAAAAA"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email id"
-        placeholderTextColor="#AAAAAA"
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Phone Number"
-        placeholderTextColor="#AAAAAA"
-        keyboardType="phone-pad"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor="#AAAAAA"
-        secureTextEntry
       />
 
       <Text style={styles.forgotPasswordText}>
         <Text onPress={() => navigation.navigate('LoginScreen')}>Login</Text>
         <Text> | </Text>
+        <Text onPress={() => navigation.navigate('SignUpScreen')}>Sign Up</Text>
+        <Text> | </Text>
         <Text>Forgot Password?</Text>
       </Text>
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OnBoardUsers')}>
-        <CustomText style={styles.buttonText}>Let's Create</CustomText>
+        <CustomText style={styles.buttonText}>Verify</CustomText>
       </TouchableOpacity>
     </View>
   );
@@ -95,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default OtpValidate;
